@@ -42,7 +42,7 @@ REPLIES = {
         "Shutting down. Until next time.",
     ],
     "unknown": [
-        "I'm not sure how to do that. Try: open, search, news, type, workspace, close, or exit.",
+        "I'm not sure how to do that. Try: start, open, search, news, type, close, or exit.",
     ],
 }
 
@@ -64,6 +64,9 @@ def parse_command(line):
     # close browser only
     if line in ("close", "close browser"):
         return "close_browser", None
+    # start = full workspace launch (VS Code + Chrome/Brave sites)
+    if line == "start":
+        return "workspace", None
     # open <site or app>
     m = re.match(r"^open\s+(.+)$", line)
     if m:
@@ -91,7 +94,8 @@ def run_jarvis():
     print("\n  ———————————————————————————")
     print("  JARVIS  —  At your service.")
     print("  ———————————————————————————")
-    print("  Commands: open <site|app|workspace> | search <query> | news | type <text> | close | exit")
+    print("  Commands: start | open <site|app|workspace> | search <query> | news | type <text> | close | exit")
+    print("  start = launch workspace (VS Code + Chrome: kalvium | Brave: youtube, instagram, linkedin, github, leetcode)")
     print("  Apps: code, notepad, chrome, brave, edge, tlauncher, file explorer\n")
 
     bot = None

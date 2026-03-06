@@ -21,6 +21,8 @@ def open_workspace():
 
     os.system("start brave https://github.com")
 
+    os.system("start brave https://leetcode.com")
+
     print("Workspace launched successfully")
 
 
